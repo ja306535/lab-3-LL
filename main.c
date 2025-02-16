@@ -139,3 +139,53 @@ int main()
 	}
   return 0;
 }
+
+
+char *infixToPostfix(char infix[]){
+    struct stack operators;
+    initialize(&operators);
+    
+    int count=0;//keep track of postfix index
+
+    char *postfix=malloc(sizeof(char)*(strlen(infix)+1)*2);
+    int len=strlen(infix);
+    for(int i=0;i<len;i++){
+        if(isdigit(infix[i])){
+            //deal with multiple digits
+            while(isdigit(infix[i])){
+                postfix[count]=infix[i];
+                i++;
+                count++;
+            }
+            i--;
+            //adding whitespace between numbers
+            postfix[count]=' ';
+            count++;
+        }
+        else if(isOperator(infix[i]))
+        {
+            if(empty(&operators))
+            push(&operators,infix[i])
+        //if the priority is lower or equal,pop the stack into the postfix until it is empty or the priorisity of the char is 
+        //higher than the one from the top of the stack
+        
+        
+    
+        }
+        //checks is the char is a parentheses
+        else if(infix[i]=='('||infix[i]==')')
+        {
+            //if it is an open parentheses push to operators
+
+            //else pop the operators stack into the postfix until it gets to an open parentheses
+
+        }
+        
+}//end of iterationg through the infix
+
+//pop all the operators left in the stack and add white spaces between them
+
+return postfix;
+
+
+}
